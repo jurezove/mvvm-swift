@@ -9,10 +9,10 @@
 import Foundation
 
 class Car {
-  var model: String?
-  var make: String?
-  var kilowatts: Int?
-  var photoURL: String?
+  var model: String
+  var make: String
+  var kilowatts: Int
+  var photoURL: String
   
   init(model: String, make: String, kilowatts: Int, photoURL: String) {
     self.model = model
@@ -23,37 +23,28 @@ class Car {
 }
 
 class CarViewModel {
-  private var car: Car?
+  private var car: Car
   static let horsepowerPerKilowatt = 1.34102209
   
-  var modelText: String? {
-    return car?.model
+  var modelText: String {
+    return car.model
   }
   
-  var makeText: String? {
-    return car?.make
+  var makeText: String {
+    return car.make
   }
   
-  var horsepowerText: String? {
-    guard let kilowatts = car?.kilowatts else {
-      return nil
-    }
-    let horsepower = Int(round(Double(kilowatts) * CarViewModel.horsepowerPerKilowatt))
+  var horsepowerText: String {
+    let horsepower = Int(round(Double(car.kilowatts) * CarViewModel.horsepowerPerKilowatt))
     return "\(horsepower) HP"
   }
   
-  var titleText: String? {
-    guard let make = car?.make, model = car?.model else {
-      return nil
-    }
-    return "\(make) \(model)"
+  var titleText: String {
+    return "\(car.make) \(car.model)"
   }
   
   var photoURL: NSURL? {
-    guard let photoURL = car?.photoURL else {
-      return nil
-    }
-    return NSURL(string: photoURL)
+    return NSURL(string: car.photoURL)
   }
   
   init(car: Car) {

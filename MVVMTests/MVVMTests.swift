@@ -27,7 +27,7 @@ class MVVMTests: XCTestCase {
     XCTAssertEqual(ferrariViewModel.modelText, "F12")
     XCTAssertEqual(ferrariViewModel.makeText, "Ferrari")
     XCTAssertEqual(ferrariViewModel.horsepowerText, "730 HP")
-    XCTAssertEqual(ferrariViewModel.photoURL, NSURL(string: ferrariF12.photoURL!))
+    XCTAssertEqual(ferrariViewModel.photoURL, NSURL(string: ferrariF12.photoURL))
     XCTAssertEqual(ferrariViewModel.titleText, "Ferrari F12")
   }
   
