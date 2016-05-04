@@ -97,7 +97,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Horsepower" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XB8-Hj-fhZ">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Kilowatts" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XB8-Hj-fhZ">
                                 <rect key="frame" x="20" y="148" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -117,7 +117,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="horsepowerField" destination="XB8-Hj-fhZ" id="lTx-G5-hMy"/>
+                        <outlet property="kilowattField" destination="XB8-Hj-fhZ" id="6dm-GH-xgn"/>
                         <outlet property="makeField" destination="yD8-Tk-aVc" id="nvR-dG-Wa5"/>
                         <outlet property="modelField" destination="jcR-Xh-BLM" id="q7m-IM-QMS"/>
                         <outlet property="saveButton" destination="QNF-h3-8IW" id="2cE-cR-1Xq"/>

@@ -25,13 +25,14 @@ class Car {
 }
 
 class CarViewModel {
-  let car: Car
+  private let car: Car
   static let horsepowerPerKilowatt = 1.34102209
   let disposeBag = DisposeBag()
   
   var modelText: BehaviorSubject<String>
   var makeText: BehaviorSubject<String>
   var horsepowerText: BehaviorSubject<String>
+  var kilowattText: BehaviorSubject<Int>
   
   var titleText: BehaviorSubject<String>
   
@@ -41,6 +42,7 @@ class CarViewModel {
   
   init(car: Car) {
     self.car = car
+    
     modelText = BehaviorSubject<String>(value: car.model)
     modelText.subscribeNext { (model) in
       car.model = model
@@ -51,21 +53,17 @@ class CarViewModel {
       car.make = make
     }.addDisposableTo(disposeBag)
     
-    
-    let horsepower = Int(round(Double(car.kilowatts) * CarViewModel.horsepowerPerKilowatt))
-    horsepowerText = BehaviorSubject<String>(value: "\(horsepower) HP")
-    
-    horsepowerText.subscribeNext { (horsepower) in
-      guard let hpDouble = Double(horsepower) else {
-        return
-      }
-      car.kilowatts = Int(round(hpDouble / CarViewModel.horsepowerPerKilowatt))
-    }.addDisposableTo(disposeBag)
-    
     titleText = BehaviorSubject<String>(value: "\(car.make) \(car.model)")
     [makeText, modelText].combineLatest { (carInfo) -> String in
       return "\(carInfo[0]) \(carInfo[1])"
     }.bindTo(titleText).addDisposableTo(disposeBag)
     
+    horsepowerText = BehaviorSubject(value: "0")
+    kilowattText = BehaviorSubject(value: car.kilowatts)
+    kilowattText.map({ (kilowatts) -> String in
+      let horsepower = Int(round(Double(kilowatts) * CarViewModel.horsepowerPerKilowatt))
+      return "\(horsepower) HP"
+    }).bindTo(horsepowerText).addDisposableTo(disposeBag)
+
   }
 }

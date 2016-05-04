@@ -20,8 +20,9 @@ class ReactiveTableViewController: UIViewController {
     super.viewDidLoad()
     
     cars.asObservable().bindTo(tableView.rx_itemsWithCellIdentifier("CarCell", cellType: UITableViewCell.self)) { (index, carViewModel: CarViewModel, cell) in
+      
       carViewModel.titleText.bindTo(cell.textLabel!.rx_text).addDisposableTo(self.disposeBag)
-      carViewModel.horsepowerText.bindTo(cell.detailTextLabel!.rx_text).addDisposableTo(self.disposeBag)
+      carViewModel.horsepowerText.bindTo(cell.detailTextLabel!.rx_text).addDisposableTo(self.disposeBag)//.bindTo(cell.detailTextLabel!.rx_text).addDisposableTo(self.disposeBag)
       
       guard let photoURL = carViewModel.photoURL else {
         return
