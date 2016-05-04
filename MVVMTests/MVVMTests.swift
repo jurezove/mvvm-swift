@@ -31,4 +31,12 @@ class MVVMTests: XCTestCase {
     XCTAssertEqual(try! ferrariViewModel.titleText.value(), "Ferrari F12")
   }
   
+  func testAdjustingKilowattsAdjustsHorsepower() {
+    let someCar = Car(model: "Random", make: "Car", kilowatts: 100, photoURL: "http://candycode.io")
+    let someCarViewModel = CarViewModel(car: someCar)
+    XCTAssertEqual(try! someCarViewModel.horsepowerText.value(), "134 HP")
+    someCarViewModel.kilowattText.onNext(200)
+    XCTAssertEqual(try! someCarViewModel.horsepowerText.value(), "268 HP")
+  }
+  
 }

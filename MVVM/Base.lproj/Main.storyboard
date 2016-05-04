@@ -117,7 +117,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="kilowattField" destination="XB8-Hj-fhZ" id="6dm-GH-xgn"/>
+                        <outlet property="kilowattField" destination="XB8-Hj-fhZ" id="WM2-86-iE4"/>
                         <outlet property="makeField" destination="yD8-Tk-aVc" id="nvR-dG-Wa5"/>
                         <outlet property="modelField" destination="jcR-Xh-BLM" id="q7m-IM-QMS"/>
                         <outlet property="saveButton" destination="QNF-h3-8IW" id="2cE-cR-1Xq"/>
