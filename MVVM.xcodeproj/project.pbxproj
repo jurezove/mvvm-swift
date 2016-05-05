@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1019423F7AEC3723A33834F5 /* Pods_MVVMTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D055BDB2640E9B8114F687 /* Pods_MVVMTests.framework */; };
 		1B29E347F03D7AEC238B61BD /* Pods_MVVMUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0042873D9984449EC780ECEA /* Pods_MVVMUITests.framework */; };
+		252CC4F71CDBE834005F8061 /* CarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252CC4F61CDBE834005F8061 /* CarTableViewCell.swift */; };
 		2582523F1CD9FF6E008CFA25 /* ReactiveTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2582523E1CD9FF6E008CFA25 /* ReactiveTableViewController.swift */; };
 		258252411CDA1092008CFA25 /* CarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258252401CDA1092008CFA25 /* CarViewController.swift */; };
 		25C7C4301CD674A700791035 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C7C42F1CD674A700791035 /* AppDelegate.swift */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		0042873D9984449EC780ECEA /* Pods_MVVMUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		05D055BDB2640E9B8114F687 /* Pods_MVVMTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		252CC4F61CDBE834005F8061 /* CarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTableViewCell.swift; sourceTree = "<group>"; };
 		2582523E1CD9FF6E008CFA25 /* ReactiveTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveTableViewController.swift; sourceTree = "<group>"; };
 		258252401CDA1092008CFA25 /* CarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarViewController.swift; sourceTree = "<group>"; };
 		25C7C42C1CD674A700791035 /* MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +125,7 @@
 				25C7C42F1CD674A700791035 /* AppDelegate.swift */,
 				2582523E1CD9FF6E008CFA25 /* ReactiveTableViewController.swift */,
 				258252401CDA1092008CFA25 /* CarViewController.swift */,
+				252CC4F61CDBE834005F8061 /* CarTableViewCell.swift */,
 				25C7C45D1CD674C600791035 /* Car.swift */,
 				25C7C4331CD674A700791035 /* Main.storyboard */,
 				25C7C4361CD674A700791035 /* Assets.xcassets */,
@@ -439,6 +442,7 @@
 				25C7C45E1CD674C600791035 /* Car.swift in Sources */,
 				2582523F1CD9FF6E008CFA25 /* ReactiveTableViewController.swift in Sources */,
 				258252411CDA1092008CFA25 /* CarViewController.swift in Sources */,
+				252CC4F71CDBE834005F8061 /* CarTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

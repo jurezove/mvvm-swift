@@ -19,22 +19,11 @@ class ReactiveTableViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    cars.asObservable().bindTo(tableView.rx_itemsWithCellIdentifier("CarCell", cellType: UITableViewCell.self)) { (index, carViewModel: CarViewModel, cell) in
-      
-      carViewModel.titleText.bindTo(cell.textLabel!.rx_text).addDisposableTo(self.disposeBag)
-      carViewModel.horsepowerText.bindTo(cell.detailTextLabel!.rx_text).addDisposableTo(self.disposeBag)//.bindTo(cell.detailTextLabel!.rx_text).addDisposableTo(self.disposeBag)
-      
-      guard let photoURL = carViewModel.photoURL else {
-        return
-      }
-      
-      NSURLSession.sharedSession().rx_data(NSURLRequest(URL: photoURL)).subscribeNext({ (data) in
-        dispatch_async(dispatch_get_main_queue(), { 
-          cell.imageView?.image = UIImage(data: data)
-          cell.setNeedsLayout()
-        })
-      }).addDisposableTo(self.disposeBag)
-      
+    tableView.estimatedRowHeight = 80
+    tableView.rowHeight = UITableViewAutomaticDimension
+    
+    cars.asObservable().bindTo(tableView.rx_itemsWithCellIdentifier("CarCell", cellType: CarTableViewCell.self)) { (index, carViewModel: CarViewModel, cell) in
+      cell.carViewModel = carViewModel
     }.addDisposableTo(disposeBag)
     
     tableView.rx_itemSelected.subscribeNext { (indexPath) in

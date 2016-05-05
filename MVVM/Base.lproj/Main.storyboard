@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -22,29 +23,48 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CarCell" textLabel="lxi-yl-Y0h" detailTextLabel="5wX-k0-ETZ" style="IBUITableViewCellStyleValue1" id="dOX-Hi-hVh">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CarCell" rowHeight="80" id="xbo-c2-TqO" customClass="CarTableViewCell" customModule="MVVM" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dOX-Hi-hVh" id="Tb8-Al-wu6">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xbo-c2-TqO" id="cXG-f7-Pto">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lxi-yl-Y0h">
-                                                    <rect key="frame" x="15" y="12" width="32" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Euk-WD-jZw">
+                                                    <rect key="frame" x="8" y="8" width="63" height="63"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Euk-WD-jZw" secondAttribute="height" id="IZN-QV-3da"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yx8-3R-zYa">
+                                                    <rect key="frame" x="79" y="8" width="43" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5wX-k0-ETZ">
-                                                    <rect key="frame" x="543" y="12" width="42" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9G9-H3-w8N">
+                                                    <rect key="frame" x="79" y="29" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Euk-WD-jZw" firstAttribute="top" secondItem="cXG-f7-Pto" secondAttribute="topMargin" id="7cN-8S-sMe"/>
+                                                <constraint firstItem="yx8-3R-zYa" firstAttribute="leading" secondItem="Euk-WD-jZw" secondAttribute="trailing" constant="8" id="DKQ-9s-oO0"/>
+                                                <constraint firstItem="9G9-H3-w8N" firstAttribute="top" secondItem="yx8-3R-zYa" secondAttribute="bottom" id="Im3-nK-OoM"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="9G9-H3-w8N" secondAttribute="bottom" id="Rjn-eX-X7P"/>
+                                                <constraint firstItem="9G9-H3-w8N" firstAttribute="leading" secondItem="yx8-3R-zYa" secondAttribute="leading" id="Yst-iS-yAI"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Euk-WD-jZw" secondAttribute="bottom" id="gZg-Gl-rZu"/>
+                                                <constraint firstAttribute="topMargin" secondItem="yx8-3R-zYa" secondAttribute="top" id="hFv-q7-1Yp"/>
+                                                <constraint firstItem="Euk-WD-jZw" firstAttribute="leading" secondItem="cXG-f7-Pto" secondAttribute="leadingMargin" id="yjn-5m-rJ9"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="carPhotoView" destination="Euk-WD-jZw" id="pc6-YG-Fqf"/>
+                                            <outlet property="carPowerLabel" destination="9G9-H3-w8N" id="f4H-jy-tAf"/>
+                                            <outlet property="carTitleLabel" destination="yx8-3R-zYa" id="o2x-a5-tEr"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
