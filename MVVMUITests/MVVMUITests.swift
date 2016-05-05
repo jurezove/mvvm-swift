@@ -65,12 +65,35 @@ class MVVMUITests: XCTestCase {
     XCTAssert(app.navigationBars.staticTexts["Ferrari Enzo"].exists)
     
     // Let's see if changes are also reflected in the table view on the home screen
-    app.navigationBars.buttons.elementBoundByIndex(0).tap()
+    tapBack(app)
     
     XCTAssert(ferrariCell.staticTexts["Ferrari Enzo"].exists)
     XCTAssert(ferrariCell.staticTexts["650 HP"].exists)
   }
   
+  // Double check that a car can't have less than 0 horsepower
+  // The testAdjustingKilowattsAdjustsHorsepower() test in MVVMTests.swift should cover that,
+  // but an extra UI test can't hurt
+  
+  func testCarDetailMinimumHorsepower() {
+    let app = XCUIApplication()
+    let table = app.tables.elementBoundByIndex(0)
+    
+    let ferrariCell = table.cells.elementBoundByIndex(0)
+    ferrariCell.tap()
+    
+    app.textFields["Kilowatts"].clearAndEnterText("-10")
+    
+    tapBack(app)
+    
+    XCTAssert(ferrariCell.staticTexts["0 HP"].exists)
+  }
+}
+
+extension XCTest {
+  private func tapBack(app: XCUIApplication) {
+    app.navigationBars.buttons.elementBoundByIndex(0).tap()
+  }
 }
 
 extension XCUIElement {

@@ -35,8 +35,11 @@ class MVVMTests: XCTestCase {
     let someCar = Car(model: "Random", make: "Car", kilowatts: 100, photoURL: "http://candycode.io")
     let someCarViewModel = CarViewModel(car: someCar)
     XCTAssertEqual(try! someCarViewModel.horsepowerText.value(), "134 HP")
-    someCarViewModel.kilowattText.onNext(200)
+    someCarViewModel.kilowattText.onNext("200")
     XCTAssertEqual(try! someCarViewModel.horsepowerText.value(), "268 HP")
+    // Minimum power is 0
+    someCarViewModel.kilowattText.onNext("-20")
+    XCTAssertEqual(try! someCarViewModel.horsepowerText.value(), "0 HP")
   }
   
 }

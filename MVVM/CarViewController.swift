@@ -37,13 +37,10 @@ class CarViewController: UIViewController {
     
     makeField.rx_text.bindTo(carViewModel.makeText).addDisposableTo(disposeBag)
     modelField.rx_text.bindTo(carViewModel.modelText).addDisposableTo(disposeBag)
-    
-    kilowattField.rx_text.map { (kwString) -> Int in
-      guard let kw = Int(kwString) else {
-        return 0
-      }
-      return kw
-    }.bindTo(carViewModel.kilowattText).addDisposableTo(disposeBag)
+    kilowattField.rx_text.filter({ (string) -> Bool in
+      // Validate we are only passing Ints
+      return Int(string) != nil
+    }).bindTo(carViewModel.kilowattText).addDisposableTo(disposeBag)
     
     carViewModel.titleText.subscribeNext { (title) in
       self.navigationItem.title = title

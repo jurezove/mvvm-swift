@@ -32,7 +32,7 @@ class CarViewModel {
   var modelText: BehaviorSubject<String>
   var makeText: BehaviorSubject<String>
   var horsepowerText: BehaviorSubject<String>
-  var kilowattText: BehaviorSubject<Int>
+  var kilowattText: BehaviorSubject<String>
   
   var titleText: BehaviorSubject<String>
   
@@ -59,9 +59,10 @@ class CarViewModel {
     }.bindTo(titleText).addDisposableTo(disposeBag)
     
     horsepowerText = BehaviorSubject(value: "0")
-    kilowattText = BehaviorSubject(value: car.kilowatts)
+    kilowattText = BehaviorSubject(value: String(car.kilowatts))
     kilowattText.map({ (kilowatts) -> String in
-      let horsepower = Int(round(Double(kilowatts) * CarViewModel.horsepowerPerKilowatt))
+      let kw = Int(kilowatts) ?? 0
+      let horsepower = max(Int(round(Double(kw) * CarViewModel.horsepowerPerKilowatt)), 0)
       return "\(horsepower) HP"
     }).bindTo(horsepowerText).addDisposableTo(disposeBag)
 
