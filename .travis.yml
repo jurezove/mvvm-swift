@@ -1,5 +1,2 @@
 language: objective-c
-script: set -o pipefail && xcodebuild \
-      -workspace MVVM.xcworkspace \
-      -scheme MVVM \
-      -sdk iphonesimulator9.3 | xcpretty
+script: set -o pipefail && xcodebuild -workspace MVVM.xcworkspace -scheme MVVM -sdk iphonesimulator9.3 | xcpretty
