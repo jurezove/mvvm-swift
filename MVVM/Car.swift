@@ -8,7 +8,6 @@
 
 import Foundation
 import RxSwift
-import RxCocoa
 
 class Car {
   var model: String
@@ -33,7 +32,6 @@ class CarViewModel {
   var makeText: BehaviorSubject<String>
   var horsepowerText: BehaviorSubject<String>
   var kilowattText: BehaviorSubject<String>
-  
   var titleText: BehaviorSubject<String>
   
   var photoURL: NSURL? {
