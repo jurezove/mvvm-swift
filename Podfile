@@ -6,7 +6,7 @@ def rx_swift
 end
 
 target 'MVVM' do
-	rx_swift
+  rx_swift
 end
 
 target 'MVVMTests' do
