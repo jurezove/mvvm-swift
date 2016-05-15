@@ -31,15 +31,13 @@ class CarViewController: UIViewController {
     
     carViewModel.makeText.bindTo(makeField.rx_text).addDisposableTo(disposeBag)
     carViewModel.modelText.bindTo(modelField.rx_text).addDisposableTo(disposeBag)
-    carViewModel.kilowattText.map({ (kw) -> String in
-      return "\(kw)"
-    }).bindTo(kilowattField.rx_text).addDisposableTo(disposeBag)
+    carViewModel.kilowattText.bindTo(kilowattField.rx_text).addDisposableTo(disposeBag)
     
     makeField.rx_text.bindTo(carViewModel.makeText).addDisposableTo(disposeBag)
     modelField.rx_text.bindTo(carViewModel.modelText).addDisposableTo(disposeBag)
     kilowattField.rx_text.filter({ (string) -> Bool in
       // Validate we are only passing Ints
-      return Int(string) != nil
+      return Int(string) != nil || string.isEmpty
     }).bindTo(carViewModel.kilowattText).addDisposableTo(disposeBag)
     
     carViewModel.titleText.subscribeNext { (title) in
