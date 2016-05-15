@@ -1,4 +1,4 @@
-https://travis-ci.org/jurezove/mvvm-swift.svg?branch=master
+![](https://travis-ci.org/jurezove/mvvm-swift.svg?branch=master)
 
 # A practical MVVM example in Swift
 Read the first part on MVVM [here](http://candycode.io/a-practical-mvvm-example-in-swift-part-1/)
