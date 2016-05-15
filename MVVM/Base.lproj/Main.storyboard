@@ -88,7 +88,7 @@
                     <navigationItem key="navigationItem" id="cd6-FZ-v6k"/>
                     <connections>
                         <outlet property="tableView" destination="2lR-CU-OFg" id="cIx-nE-ojc"/>
-                        <segue destination="SFo-Ro-5vR" kind="show" identifier="showReceipt" id="efc-vT-6Lb"/>
+                        <segue destination="SFo-Ro-5vR" kind="show" identifier="showCar" id="efc-vT-6Lb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ogL-yd-8Iu" userLabel="First Responder" sceneMemberID="firstResponder"/>

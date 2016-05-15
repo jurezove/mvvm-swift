@@ -20,14 +20,13 @@ class ReactiveTableViewController: UIViewController {
     super.viewDidLoad()
     
     tableView.estimatedRowHeight = 80
-    tableView.rowHeight = UITableViewAutomaticDimension
     
     cars.asObservable().bindTo(tableView.rx_itemsWithCellIdentifier("CarCell", cellType: CarTableViewCell.self)) { (index, carViewModel: CarViewModel, cell) in
       cell.carViewModel = carViewModel
     }.addDisposableTo(disposeBag)
     
     tableView.rx_itemSelected.subscribeNext { (indexPath) in
-      self.performSegueWithIdentifier("showReceipt", sender: indexPath)
+      self.performSegueWithIdentifier("showCar", sender: indexPath)
       self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }.addDisposableTo(disposeBag)
   }
