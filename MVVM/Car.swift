@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 class Car {
   var model: String
@@ -23,25 +24,15 @@ class Car {
 }
 
 class CarViewModel {
-  private var car: Car
+  private let car: Car
   static let horsepowerPerKilowatt = 1.34102209
+  let disposeBag = DisposeBag()
   
-  var modelText: String {
-    return car.model
-  }
-  
-  var makeText: String {
-    return car.make
-  }
-  
-  var horsepowerText: String {
-    let horsepower = Int(round(Double(car.kilowatts) * CarViewModel.horsepowerPerKilowatt))
-    return "\(horsepower) HP"
-  }
-  
-  var titleText: String {
-    return "\(car.make) \(car.model)"
-  }
+  var modelText: BehaviorSubject<String>
+  var makeText: BehaviorSubject<String>
+  var horsepowerText: BehaviorSubject<String>
+  var kilowattText: BehaviorSubject<String>
+  var titleText: BehaviorSubject<String>
   
   var photoURL: NSURL? {
     return NSURL(string: car.photoURL)
@@ -49,5 +40,29 @@ class CarViewModel {
   
   init(car: Car) {
     self.car = car
+    
+    modelText = BehaviorSubject<String>(value: car.model)
+    modelText.subscribeNext { (model) in
+      car.model = model
+    }.addDisposableTo(disposeBag)
+    
+    makeText = BehaviorSubject<String>(value: car.make)
+    makeText.subscribeNext { (make) in
+      car.make = make
+    }.addDisposableTo(disposeBag)
+    
+    titleText = BehaviorSubject<String>(value: "\(car.make) \(car.model)")
+    [makeText, modelText].combineLatest { (carInfo) -> String in
+      return "\(carInfo[0]) \(carInfo[1])"
+    }.bindTo(titleText).addDisposableTo(disposeBag)
+    
+    horsepowerText = BehaviorSubject(value: "0")
+    kilowattText = BehaviorSubject(value: String(car.kilowatts))
+    kilowattText.map({ (kilowatts) -> String in
+      let kw = Int(kilowatts) ?? 0
+      let horsepower = max(Int(round(Double(kw) * CarViewModel.horsepowerPerKilowatt)), 0)
+      return "\(horsepower) HP"
+    }).bindTo(horsepowerText).addDisposableTo(disposeBag)
+
   }
 }

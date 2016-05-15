@@ -1,2 +1,3 @@
-language: swift
-xcode_workspace: MVVM.xcworkspace
+language: objective-c
+osx_image: xcode7.3
+script: set -o pipefail && xcodebuild test -workspace MVVM.xcworkspace -scheme MVVM -sdk iphonesimulator9.3 | xcpretty
